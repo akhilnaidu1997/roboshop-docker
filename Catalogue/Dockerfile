@@ -1,6 +1,7 @@
 FROM node:20
 WORKDIR /app
 RUN useradd roboshop
+COPY *.js .
 RUN npm install
 EXPOSE 8080
 ENV MONGO="true" \
