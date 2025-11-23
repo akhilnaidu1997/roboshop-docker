@@ -1,6 +1,7 @@
 FROM node:20
-COPY *.js .
 WORKDIR /app
+COPY *.js .
+COPY package.json .
 RUN useradd roboshop
 RUN npm install
 EXPOSE 8080
