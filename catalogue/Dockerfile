@@ -6,7 +6,7 @@ RUN npm install
 
 FROM node:20.19.6-alpine3.22
 WORKDIR /app
-RUN useradd roboshop 
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop 
 RUN chown -R roboshop:roboshop /app
 COPY --from=build /app /app
 EXPOSE 8080
