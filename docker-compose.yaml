@@ -2,6 +2,8 @@ services:
   mongodb:
     image: mongodb:v1
     container_name: mongodb
+    volumes:
+    - mongodb:/data/db
   
   catalogue:
     image: catalogue:v1
@@ -12,6 +14,8 @@ services:
   redis:
     image: redis:v1
     container_name: redis
+    volumes:
+    - redis:/data
 
   user:
     image: user:v1
@@ -30,6 +34,8 @@ services:
   mysql:
     image: mysql:v1
     container_name: mysql
+    volumes:
+    - mysql:/var/lib/mysql
     
   shipping:
     image: shipping:v1
@@ -44,6 +50,8 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
+    volumes:
+    - rabbitmq:/var/lib/rabbitmq
 
   payment:
     image: payment:v1
@@ -70,3 +78,9 @@ networks:
     driver: bridge
     name: roboshop
     external: false
+  
+volumes:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq: 
