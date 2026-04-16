@@ -1,3 +1,5 @@
 FROM mysql:8.0
 COPY *.sql /docker-entrypoint-initdb.d
-ENV MYSQL_ROOT_PASSWORD="RoboShop@1"
+COPY ./script.sh /usr/local/bin/script.sh
+RUN chmod +x /usr/local/bin/script.sh
+ENTRYPOINT [ "/usr/local/bin/script.sh" ]
